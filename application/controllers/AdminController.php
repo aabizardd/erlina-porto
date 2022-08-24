@@ -15,6 +15,13 @@ class AdminController extends CI_Controller
         // $this->load->model('Auth_Model');
     }
 
+    public function index()
+    {
+        $this->load->view('backend/template/v_header');
+        $this->load->view('backend/page/v_admin');
+        $this->load->view('backend/template/v_footer');
+    }
+
     protected function status_lock()
     {
 
@@ -113,15 +120,152 @@ class AdminController extends CI_Controller
         redirect('login');
     }
 
+    public function portofolio()
+    {
+
+        $porto = $this->db->get('portofolio')->result();
+        $data['porto'] = $porto;
+
+        $this->load->view('backend/template/v_header', $data);
+        $this->load->view('backend/page/v_data_portofolio');
+        $this->load->view('backend/template/v_footer');
+    }
+
+    public function add_porto()
+    {
+
+        // echo "Hai";
+
+        $image = $this->_uploadFile('foto_porto', 'assets/frontend/images/portofolio/');
+
+        $title = htmlspecialchars($this->input->post('title'));
+        $tag = htmlspecialchars($this->input->post('tag'));
+        $description = htmlspecialchars($this->input->post('description'));
+        $link = htmlspecialchars($this->input->post('link'));
+
+        $data = [
+            'title' => $title,
+            'tag' => $tag,
+            'description' => $description,
+            'link' => $link,
+            'image' => $image,
+        ];
+
+        $this->db->insert('portofolio', $data);
+
+        $flashdata = $this->alert_dismiss('success', 'Berhasil menambahkan data portofolio');
+        $this->session->set_flashdata('message', $flashdata);
+
+        redirect($_SERVER['HTTP_REFERER']);
+
+        // var_dump($role);die();
+
+    }
+
+    public function update_porto()
+    {
+
+        // echo "Hai";
+
+        $id_porto = $this->input->post('id_porto');
+
+        // $image = $this->_uploadFile('foto_porto', 'assets/frontend/images/portofolio/');
+
+        $title = htmlspecialchars($this->input->post('title'));
+        $tag = htmlspecialchars($this->input->post('tag'));
+        $description = htmlspecialchars($this->input->post('description'));
+        $link = htmlspecialchars($this->input->post('link'));
+
+        $gambar = $_FILES['foto_porto']['name'];
+
+        // var_dump($role);die();
+
+        if ($gambar == "") {
+            $image_new = $this->input->post('image_old');
+        } else {
+            $image_new = $this->_uploadFile('foto_porto', 'assets/frontend/images/portofolio/');
+        }
+
+        $data = [
+            'title' => $title,
+            'tag' => $tag,
+            'description' => $description,
+            'link' => $link,
+            'image' => $image_new,
+        ];
+
+        $this->db->update('portofolio', $data, ['id' => $id_porto]);
+
+        $flashdata = $this->alert_dismiss('success', 'Berhasil update data portofolio');
+        $this->session->set_flashdata('message', $flashdata);
+
+        redirect($_SERVER['HTTP_REFERER']);
+
+        // var_dump($role);die();
+
+    }
+
+    public function hapus_porto($id)
+    {
+
+        $this->db->delete('portofolio', ['id' => $id]);
+
+        $flashdata = $this->alert_dismiss('success', 'Berhasil hapus data portofolio');
+        $this->session->set_flashdata('message', $flashdata);
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    private function _uploadFile($file_name, $file_directory)
+    {
+        $namaFiles = $_FILES[$file_name]['name'];
+        $ukuranFile = $_FILES[$file_name]['size'];
+        $type = $_FILES[$file_name]['type'];
+        $eror = $_FILES[$file_name]['error'];
+
+        // $nama_file = str_replace(" ", "_", $namaFiles);
+        $tmpName = $_FILES[$file_name]['tmp_name'];
+
+        $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+
+        $ekstensiGambar = explode('.', $namaFiles);
+
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+            $flashdata = $this->alert_dismiss('danger', 'Yang kamu pilih bukan gambar!');
+            $this->session->set_flashdata('message', $flashdata);
+            redirect($_SERVER['HTTP_REFERER']);
+            return false;
+        }
+
+        $namaFilesBaru = "porto-";
+        $namaFilesBaru .= uniqid();
+        $namaFilesBaru .= '.';
+        $namaFilesBaru .= $ekstensiGambar;
+
+        move_uploaded_file($tmpName, $file_directory . $namaFilesBaru);
+
+        // 'assets/img/profile/'
+
+        return $namaFilesBaru;
+    }
+
     public function alert_dismiss($type, $text)
     {
 
+        // <div class="alert alert-primary alert-dismissible fade show">
+        //     <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+        //                 class="mdi mdi-close"></i></span>
+        //     </button>
+        //     <strong>Success!</strong> Message has been sent.
+        // </div>
+
         $alert = '<div class="alert alert-' . $type . ' alert-dismissible fade show" role="alert">
-		' . $text . '
-		<button type="button" class="close" data-dismiss="alert"
-			aria-label="Close">
-             <span aria-hidden="true">&times;</span>
+
+		<button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
+        <span><i class="mdi mdi-close"></i></span>
         </button>
+        ' . $text . '
 		</div>';
 
         return $alert;

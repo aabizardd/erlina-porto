@@ -58,3 +58,7 @@ $route['login']['GET'] = 'AdminController/login';
 $route['login']['POST'] = 'AdminController/do_login';
 $route['unlock_admin'] = 'AdminController/unlock_admin';
 $route['logout'] = 'AdminController/logout';
+$route['admin'] = 'AdminController/index';
+$route['admin/portofolio']['GET'] = 'AdminController/portofolio';
+$route['admin/add_porto'] = 'AdminController/add_porto';
+$route['admin/update_porto'] = 'AdminController/update_porto';

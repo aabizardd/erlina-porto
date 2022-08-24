@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com/">
 
+    <link rel="icon" type="image/jpg" sizes="16x16" href="<?=base_url('assets/frontend/')?>icon/logo-web.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url('assets/frontend/css/')?>font-awesome.min.css">

@@ -18,38 +18,20 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-2">
+
+            </div>
+            <div class="col-md-6 col-lg-2">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Explore</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About Us</a></li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
                         <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Work</a></li>
+                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-6 col-lg-2">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Quick Links</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact Us</a></li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Terms &amp; Conditions</a>
-                        </li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Privacy</a></li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Feedbacks</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-2">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Categories</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Graphic Design</a></li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web Design</a></li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Branding &amp; Printing</a>
-                        </li>
-                        <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Web Development</a></li>
-                    </ul>
-                </div>
+
             </div>
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4">
@@ -82,9 +64,8 @@
                             src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                         <script>
                         document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made
-                        with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a
-                            href="https://colorlib.com/" target="_blank" rel="nofollow noopener">Colorlib</a>
+                        </script> <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a
+                            href="https://www.instagram.com/" target="_blank" rel="nofollow noopener">Erlina</a>
                     </p>
                 </div>
             </div>
